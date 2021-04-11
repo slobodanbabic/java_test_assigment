@@ -1,5 +1,6 @@
 package com.alasdoo.developercourseassignment.controller;
 
+import com.alasdoo.developercourseassignment.dto.StudentDTO;
 import com.alasdoo.developercourseassignment.dto.TeacherDTO;
 import com.alasdoo.developercourseassignment.service.impl.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +43,11 @@ public class TeacherController {
     @DeleteMapping(value = "/delete/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void deleteTeacher(@PathVariable("id") Integer id) {
     	teacherServiceImpl.remove(id);
+    }
+    
+    @PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public TeacherDTO updateTeacher(@PathVariable("id") Integer id, @RequestBody TeacherDTO teacherDTO) {
+    	return teacherServiceImpl.update(id, teacherDTO);    	
     }
 
     @GetMapping(value = "/get/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
