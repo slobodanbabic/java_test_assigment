@@ -5,6 +5,7 @@ import com.alasdoo.developercourseassignment.service.impl.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +36,11 @@ public class TeacherController {
     @PostMapping(value = "/addTeacher", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public TeacherDTO saveTeacher(@RequestBody TeacherDTO teacherDTO) {
         return teacherServiceImpl.save(teacherDTO);
+    }
+    
+    @DeleteMapping(value = "/delete/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteTeacher(@PathVariable("id") Integer id) {
+    	teacherServiceImpl.remove(id);
     }
 
     @GetMapping(value = "/get/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
