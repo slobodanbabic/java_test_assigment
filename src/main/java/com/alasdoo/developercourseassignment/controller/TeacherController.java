@@ -29,6 +29,7 @@ public class TeacherController {
 		return teacherServiceImpl.findOne(id);
 	}
 
+	//get all teachers from DB
 	@GetMapping(value = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<TeacherDTO> getAllTeachers() {
 		return teacherServiceImpl.findAll();
@@ -38,12 +39,12 @@ public class TeacherController {
 	public TeacherDTO saveTeacher(@RequestBody TeacherDTO teacherDTO) {
 		return teacherServiceImpl.save(teacherDTO);
 	}
-
+	//remove teacher for the given id
 	@DeleteMapping(value = "/delete/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteTeacher(@PathVariable("id") Integer id) {
 		teacherServiceImpl.remove(id);
 	}
-
+	//update teacher for the given id
 	@PutMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public TeacherDTO updateTeacher(@PathVariable("id") Integer id, @RequestBody TeacherDTO teacherDTO) {
 		return teacherServiceImpl.update(id, teacherDTO);
