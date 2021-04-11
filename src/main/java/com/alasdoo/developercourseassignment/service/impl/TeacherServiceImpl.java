@@ -52,6 +52,7 @@ public class TeacherServiceImpl implements TeacherService {
 		teacherRepository.deleteById(id);
 	}
 
+	@Override
 	public TeacherDTO update(Integer id, TeacherDTO teacherDTO) {
 		Optional<Teacher> oldTeacher = teacherRepository.findById(id);
 		if (!oldTeacher.isPresent()) {
