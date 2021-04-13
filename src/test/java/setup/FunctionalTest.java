@@ -16,7 +16,8 @@ public class FunctionalTest {
 
 	@BeforeAll
 	public static void setUp() {
-		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "geckodriver");
+		// use FF Driver
 		driver = new FirefoxDriver();
 	}
 
